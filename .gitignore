@@ -15,3 +15,7 @@ frontend/node_modules
 frontend/.env
 frontend/package-lock.json
 frontend/.vercel
+docs/node_modules
+docs/.env
+docs/.vercel
+docs/package-lock.json
