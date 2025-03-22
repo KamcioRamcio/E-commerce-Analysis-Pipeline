@@ -1,0 +1,9 @@
+version: 2
+
+sources:
+  - name: dbt_project
+    database: ecommerce-analysis-453419
+    schema: online_retail_27
+    tables:
+      - name: online_retail_27_cleaned
+      - name: rfm_online_retail_27

@@ -1,0 +1,12 @@
+dbt_project:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: ecommerce-analysis-453419
+      dataset: online_retail_27
+      keyfile: /usr/local/airflow/include/service_account.json
+      threads: 4
+      timeout_seconds: 300
+      location: EU

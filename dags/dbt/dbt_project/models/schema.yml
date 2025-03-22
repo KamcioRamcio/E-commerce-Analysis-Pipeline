@@ -1,0 +1,105 @@
+version: 2
+
+models:
+  - name: products
+    description: Product information aggregated from sales data
+    columns:
+      - name: StockCode
+        description: Unique product identifier
+        tests:
+          - not_null
+      - name: Description
+        description: Product description
+      - name: total_orders
+        description: Number of orders containing this product
+      - name: total_quantity_sold
+        description: Total quantity sold
+      - name: total_revenue
+        description: Total revenue generated from this product
+
+  - name: customers
+    description: Customer information with RFM analysis data
+    columns:
+      - name: CustomerID
+        description: Unique customer identifier
+        tests:
+          - unique
+          - not_null
+      - name: total_orders
+        description: Total number of orders placed by the customer
+      - name: RFM_Segment
+        description: Customer segment based on RFM analysis
+
+  - name: sales
+    description: Sales information aggregated by invoice
+    columns:
+      - name: InvoiceNo
+        description: Invoice number
+        tests:
+          - not_null
+      - name: InvoiceDate
+        description: Date of the invoice
+      - name: invoice_total
+        description: Total amount of the invoice
+
+  - name: daily_sales
+    description: Daily sales aggregation
+    columns:
+      - name: sale_date
+        description: Date of sale
+        tests:
+          - unique
+          - not_null
+      - name: orders_count
+        description: Number of orders on this date
+      - name: daily_revenue
+        description: Total revenue on this date
+
+  - name: monthly_sales
+    description: Monthly sales aggregation
+    columns:
+      - name: sale_month
+        description: Month of sale
+        tests:
+          - unique
+          - not_null
+      - name: orders_count
+        description: Number of orders in this month
+      - name: unique_customers
+        description: Number of unique customers in this month
+      - name: items_sold
+        description: Number of unique products sold in this month
+      - name: monthly_revenue
+        description: Total revenue in this month
+
+  - name: sales_region
+    description: Sales region information
+    columns:
+      - name: Country
+        description: Country name
+        tests:
+          - not_null
+          - unique
+      - name: total_invoices
+        description: Total number of orders from this country
+
+  - name: fct_returns_analysis
+    description: Table tracking returned items and their matching original purchases
+    columns:
+      - name: transaction_id
+        description: Unique transaction identifier
+        tests:
+          - not_null
+      - name: match_type
+        description: Type of match between return and original purchase
+      - name: transaction_status
+        description: Classification of transaction validity
+
+  - name: fct_clean_sales
+    description: Clean sales data with processed returns removed
+    columns:
+      - name: is_return_processed
+        description: Flag indicating if return was properly handled
+        tests:
+          - accepted_values:
+              values: [True, False]
