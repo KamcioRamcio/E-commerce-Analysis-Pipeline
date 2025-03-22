@@ -11,13 +11,13 @@ services:
 
   frontend:
     build:
-      context: ./frontend
+      context: ./docs
       dockerfile: Dockerfile
     volumes:
-      - ./frontend:/app
+      - ./docs:/app
       - /app/node_modules
     ports:
-      - 8888:8888
+      - 3001:3000
     environment:
       - NODE_ENV=development
     restart: always

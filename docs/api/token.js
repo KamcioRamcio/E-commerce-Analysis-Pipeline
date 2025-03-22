@@ -4,10 +4,10 @@ const METABASE_SITE_URL = process.env.METABASE_SITE_URL || "http://localhost:300
 const METABASE_SECRET_KEY = process.env.METABASE_SECRET_KEY;
 
 export default function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', 'https://kamcioramcio.github.io/E-commerce-Analysis-Pipeline/');
+  res.setHeader('Access-Control-Allow-Origin', 'https://kamcioramcio.github.io');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'X-CSRF-Token, X-Requested-With, Accept, Accept-Version, Content-Length, Content-MD5, Content-Type, Date, X-Api-Version');
-
+  res.setHeader('Vary', 'Origin');
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
   }
