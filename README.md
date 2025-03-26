@@ -162,6 +162,3 @@ To process new data sources:
 - dbt tests validate data quality
 - Metabase dashboards visualize pipeline results
 
-## License
-
-[Include your license information here]
